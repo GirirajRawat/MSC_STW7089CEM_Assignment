@@ -1,0 +1,296 @@
+require(readr)
+x<-read_csv("x.csv",col_names=F)
+y <- read_csv("y.csv", col_names =F)
+time <- read_csv("time.csv", col_names =F)
+colnames(x)<-paste0(rep("x",nco1(x)),1:col(x))
+colnames(y) <- "y"
+colnames(time) <-"time"
+df<- cbind(time,y,x)
+
+install.packages('ggplot2')
+library(ggplot2)
+# Time Series Plot
+ggplot(df, aes(x-timc, y=x1)) +geom_line( color="#69b3a2") + labs(title="Time Plot for Input X1")
+ggplot(df, aes(x-time, y=x2)) + geom_line(color="blue") + labs(title = "Time Plot for Input X2")
+ggplot(df, aes(x-time, y=x3)) + geom_line(color="red") + labs(title = "Time Plot for Input X3")
+ggplot(df, aes(x-time, y=x4)) + geom_line(color="steelblue") + labs(title = "Time Plot for Input X4")
+ggplot(df, aes(x-time, y=y)) + geom_line(color="brown") + labs(title = "Time Series Graph for Output
+Y")
+
+#Distribution
+install.packages('e1071')
+library(e1071)
+getmode <-function(v) {
+uniqv <- unique (v)
+uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+ggplot(df, aes(x=x1)) + geom_density(color="#69b3a2") + labs(title = "Distribution Plot for Input X1")
+mean(df$x1)
+median(df$x1)
+var(df$x1)
+sd(df$x1)
+skewness(df$x1)
+getmode(df$x1)
+print("Distribution for Input X2")
+
+
+ggplot(df, aes(x=x2)) + geom_density(color="blue") + labs(title="Distribution Plot for Input
+X2")
+mean(df$x2)
+median(df$x2)
+var(df$x2)
+sd(df$x2)
+skewness(df$x2)
+getmode(df$x2)
+
+print("Distribution for Input X3")
+ggplot(df, aes(x=x3)) + geom_density(color="#69b3a2") + labs(title = "Distribution Plot for
+Input X3")
+mean (df$x3)
+median(df$x3)
+var(df$x3)
+sd(dfSx3)
+skewness(df$x3)
+getmode(df$x3)
+
+print("Distribution for Input X4")
+ggplot(df, aes(x=x4)) + geom_density(color="blue") + labs(title = "Distribution Plot for Input
+X4")
+mean(df$x4)
+median(df$x4)
+var(df$x4)
+sd(dfSx4)
+skewness(df5x4)
+getmode(df$x4)
+
+print("Distribution for Output Y")
+ggplot(df, aes(x=y)) + geom_density(color="blue") + labs(title = "Distribution Plot for Output Y")
+mean(df$y)
+median(df$y)
+var(df$y)
+
+sd(df$y)
+skewness(day)
+getmode(df$y)
+
+
+# CORRELATION AND SCATTER PLOTS
+print("Relationship for X1:Y")
+ggplot(df, aes(x-x1, y=y)) + geompoint()+ labs(title="Scatter Plot Graph for Input X1 against Y")
+cor(df$x1, df$y)
+print("Relationship for X2:Y")
+ggplot(df, aes(x-x2, y-y)) + geompoint() + labs(title="Scatter Plot Graph for Input X2 against Y")
+cor(df$x2, df$y)
+print("Relationship for X3:Y") ggplot(df, aes(x=x3, y-y)) + geompoint() + labs(title = "Scatter Plot
+Graph for Input X3 against Y")
+cor(df$x3, df$y)
+print("Relationship for X4:Y") ggplot(df, aes(x-x4, y-y)) + geompoint() + labs(title = "Scatter Plot
+Graph for Input X4 against Y")
+cor (df$x4, df$y)
+
+III. Task 2 Initializing Variables Source Code
+n<- length(df$x1)
+ones = matrix(1, n, 1)
+Y = df$y
+x1 = df$x1
+x1_2= df$x1^2
+x1_3=dfl$x1^3
+x1_4=df3x1^4
+x2 = df$x2
+x2_2= df$x^2
+x2_3= df$x2^3
+x2_4 = df$x2^4
+x3 = dfSx3
+x3_2= dfSx3^2
+x3_3= df$x3 ^ 3
+x3_4=dfSx3^4
+x4 = df$x4
+x4_2= dfsg^2
+x4_3=dfSx4 ^3
+x4_4 = dfSx4 ^4
+
+IV. Task 2.1 Source Code
+#Task 2.1
+# 1: y =iii x4) + (t2 * (x1^2)) + (t3 * (x1^3)) + (t4 *(x3^4)) + to
+# 2: y = (t1 * x3^3) + (t2 * (x3^4)) + to
+# 3: y = (t1 * x2) + (t2* (x1^3)) + (t3 * (x3^4)) + to
+# 4: y = (tl* x4) + (t2 * (x1^3)) + (t4 * (x3A4)) + to
+# 5: y = (t1 * x4) + (t2 * (x1^2)) + (t3 * (x1^3)) + (t4 * (x3^4)) + (t5 * (x1^4)) + t0
+
+X = cbind(x4, x1_2, x1_3, x3_4, ones)
+thetaHat = solve(t(X) %*% X) %*% t(X) %*% Y
+print(thetaHat)
+
+X 2 = cbind(3_3, x3_4, ones)
+thetaHat2 = solve(t(X_2) %*% X_2) %*% t(X_2) %*% Y
+print(thetaHat2)
+
+X_3 = cbind(x2, xl_3, x3_4, ones)
+thetaHat3 = solve(t(X_3) %*% X_3) %*% t(X_3) %*% Y
+X 3 = cbind(x2, xl_3, x3_4, ones)
+thetaHat3 = solve(t(X_3) %*% X_3) %*% t(X_3) %*% Y
+print(thetaHat3)
+
+X_4=cbind(x4, xl_3, x3_4, ones)
+thetaHat4 = solve(t(X_4) 0/0*% X_4) %*% t(X_4) %*% Y
+print(thetaHat4)
+
+X_5=cbind(x4, xl_2, x1_3, x3_4, xl_4, ones)
+thetaHat5 = solve(t(X_5) %*% X_5) %*% t(X5) %*% Y
+print(thetaHat5)
+
+
+IV. Task 2.2 Source Code
+# Task 2.2
+rss <- sum((Y-(X %*% thetaHat))^2)
+rss_2 <- sum((Y-(X_2 %*% thetaHat2))^2)
+rss_3<-sum((Y-(X_3 %*% thetaHat3))^2)
+rss_4 <- sum((Y-(X_4 %*% thetaHat4))^2)
+rss_5 <- sum((Y-(X_5 %*% thetaHat5))^2)
+
+
+V. Task 2.3: Source Code
+# Task 2.3
+var_X = rss/(n-1)
+log_likelihood = (-(n/2)* log(2*pi))- ((n/2)* log(var_X)) - (((2 *var_X)^-1)*rss)
+
+var_X2 = rss_2/(n-1)
+log_likelihood_2 = kn/2)* log(2*pi))- ((n/2)* log(var_X2)) - (((2 *var_X2)^-1)*rss_2)
+
+var_X3 = rss_3/(n-1)
+log_likelihood_3 = (-(n/2)* log(24'pi))- ((n/2)* log(var_X3)) - (((2 *var_X3)^-1) * rss_3)
+
+var_X4 = rss_4/(n-1)
+log_likelihood_4 = (-(n/2)* log(2*pi))- ((n/2)* log(var_X4)) - (((2*var_X4)^-1)*rss_4)
+
+var_X5 = rss_5/(n-1)
+log_likelihood_5= (-n/2)* log(2*pi))-((n/2)* log(var_X5)) -(((2*var_X5)^-1)*rss_5)
+
+
+VI. Task 2.4 Source Code
+# Task 2.4
+k = length(thetaHat)
+aic = (2 k) - (2* log_likelihood)
+bic (k* log(n)) - (2 * log_likelihood)
+
+k2= length(thetaHat2)
+aic_2 = (2* k2) - (2 * log_likelihood_2)
+bic_2 = (k2* log(n)) - (2 * log_likelihood_2)
+
+k3 = length(thetaHat3)
+aic_3 = (2*k3) - (2 * log_likelihood_3)
+bic_3 = (k3* log(n)) - (2 * log_likelihood_3)
+
+k4 = length(thetaHat4)
+aic_4 = (2* k4) - (2*log_likelihood_4)
+bic_4 = (k4* log(n)) - (2* log_likelihood_4)
+
+k5 = length(thetaHat5)
+aic 5 = (2* k5) - (2 * log_likelihood_5)
+
+VI. Task 2.5 Souce Code
+# Task 2.5
+y_Hat = X %*% thetaHat
+error] = Y - y_Hat
+qqnorm(errorl)
+qqline(error1, col="blue")
+
+y_Hat2 = X_2 %*% thetaHat2
+error2 = Y-y_Hat2
+qqnorm(error2); qqline(error2, col="red")
+
+y_Hat3 = X_3 %*0% thetaHat3
+error3 = Y-y_Hat3
+qqnorm(error3)
+qqline(error3, col="green")
+
+y_Hat4 = X_4%*% thetaHat4
+error4 = Y-y_Hat4
+qqnorm(error4) + qqline(errort, col="purple")
+
+y_Hat5 = X_5 %*% thetaHat5
+error5 = Y-y_Hat5
+qqnorm(error5)
+qqline(error5, col="orange")
+
+
+VI. Task 2.7 Source Code
+# Task 2.7
+trainIndex = sample(1:n, size = round(0.7*n), replace=FALSE)
+train_df = df[trainIndex,1]
+test_df = df[-trainIndex,]
+# SELECTED MODEL 3: y = (t1 * x2) + (t2* (x1^3)) + (t3 * (x3^4)) + t0
+
+train_n <- length(train_df$x1)
+train_ones = matrix(1,train_n, 1)
+
+train_x2 = train_df$x2
+train_x1_3= train_df$x1^3
+train_x3_4 = train_df$x3^4
+train_X = cbind(train_x2, train_xl_3, train_x3_4, train_ones)
+train_Y = train_df$y
+train_thetaHat = solve(t(train_X) %*% train_X) %*% t(train_X) %*% train_Y
+print(train_thetaHat)
+
+test_n <- length(test_df$x1)
+test_ones = matrix(1,test_n, 1)
+test_x2 = test_df$x2
+test_x1_3= test_df$x1^3
+test_x3_4 = test_df$x3^4
+test_X = cbind(test_x2, test_xl_3, test_x3_4, test_ones)
+testY_Hat test_X%*% train_thetaHat
+
+CI = 2 * sqrt(var_y_hat) # Confidence interval
+CI= 2 * sqrt(var_y_hat) # Confidence interval
+
+# First Input
+plot(test_x2, testY_Hat, col="blue", xlab="Input x2", ylab="Output", main="Confidence
+interval plot against input X2")
+segments(test_x2, testY_Hat-CI, test_x2, testY_Hat+CI) # Adds error bars to the individual
+data points
+points (test_x2, test_Y, col="red", pch="*") # Sample
+
+# Second Input
+plot(test_df$x1, testY_Hat, col="blue", xlab="Input x1", ylab="Output", main="Confidence
+interval plot against input X1")
+segments(test_df$x1, testY_Hat-CI, test_df$x1, testY_Hat+CI) # Adds error bars to the
+individual data points
+points (test_df5x1, test_Y, col="red", pch="*")
+
+# Third Input
+plot(test_df$x3, testY_Hat, col="blue", xlab="Input x3", ylab="Output",
+main="Confidence interval plot against input X3")
+segments(test_df$x3, testY_Hat-CI, test_df$x3, testY_Hat+CI) # Adds error bars to the
+individual data points
+
+# Fourth Input - Not part of Model
+plot(test_df$x4, testY_Hat, col="blue", xlab="Input x4", ylab="Output",
+main="Confidence interval plot against input X4")
+segments(test_df$x4, testY_Hat-CI, test_df$x4, testY_Hat+CI) # Adds error bars to the
+individual data points
+points (test_dfSx4, test_Y, col="red", pch="*")
+
+VI. Task 3 Source Code
+epsilon <- 1.15* rss_S
+
+theta0_mat 4-c()
+thetal_mat <-c()
+
+for (i in 1:100000) {
+theta0 = runif( 1, -4* thetaHat3[4], 4* thetaHat3[4])
+theta 1 = runif( I, -4 * thetaHatS[1], 4 * thetaHats[1])
+
+modelParam <- thetaHat3 # Gotten from Tab 2.1
+ModelParam[1] <- thetal
+ModelParam[4] <- theta0
+model_yhat <- X _3 %*% modelParam
+model_rss <- sum((Y- model_yhat)^2)
+if (model_rss < epsilon) {
+theta0_mat <-c(theta0_mat,theta0)
+thetal_mat <- c(thetal_mat,theta 1)
+}
+
+}
+hist(theta0_mat, main-"Marginal Distribution of t1 theta0)", xlab-"theta0")
+hist(theta1_mat, main-"Marginal Distribution of t2 theta1)", xlab-"theta1")
+plot(theta0_mat, thetal_mat, col-"green", main-"Joint Distribution of t1 and t2")
